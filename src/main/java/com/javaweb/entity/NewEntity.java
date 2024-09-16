@@ -14,13 +14,13 @@ public class NewEntity extends BaseEntity {
 	@Column(name = "title", columnDefinition = "NVARCHAR(255)")
 	private String title;
 	
-	@Column(name = "thumbnail")
+	@Column(name = "thumbnail", columnDefinition = "NVARCHAR(255)")
 	private String thumbnail;
 	
-	@Column(name = "shortdescription", columnDefinition = "TEXT")
+	@Column(name = "shortdescription", columnDefinition = "NTEXT")
 	private String shortDescription;
 	
-	@Column(name = "content", columnDefinition = "TEXT")
+	@Column(name = "content", columnDefinition = "NTEXT")
 	private String content;
 	
 //	@ManyToOne(fetch = FetchType.LAZY)

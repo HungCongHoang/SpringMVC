@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+            http://www.springframework.org/schema/security
+            http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+            
+    <http auto-config="false" use-expressions="true" disable-url-rewriting="true">
+    	
+    	<access-denied-handler error-page="/accessDenied" />
+        <form-login  login-page="/dang-nhap"
+                     username-parameter="j_username"
+                     password-parameter="j_password"
+                     login-processing-url="/j_spring_security_check"
+                     authentication-success-handler-ref="customSuccessHandler"
+                     authentication-failure-url="/dang-nhap?incorrectAccount"/>
+        <session-management invalid-session-url="/dang-nhap?sessionTimeout"/>
+        <!-- login-processing-url: nơi để submit action(nhận url)
+        (chứa action security viết sẵn vd: login, logout,...)
+        invalid-session-url: sau time user login mà k thực hiện thao tác gì
+        trên web thì web sẽ tự động logout nhằm bảo mật tài khoản tránh 
+        người khác thấy và sử dụng khi chưa đc user cho phép-->
+        <logout delete-cookies="JSESSIONID"/>
+    </http>
+
+    <authentication-manager >
+        <authentication-provider user-service-ref="customUserDetailsService">
+        		<password-encoder ref="bcryptEncoder"/>
+        </authentication-provider>
+    </authentication-manager>
+    
+    <!-- bcryptEncoder: convert password sang dạng MD5 để thực hiện so sánh-->
+    <beans:bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+    <!-- gọi hàm  CustomUserDetailsService xử lý phần authentication-->
+    <beans:bean id="customUserDetailsService" class="com.javaweb.service.impl.CustomUserDetailsService" />
+    <beans:bean id="customSuccessHandler" class="com.javaweb.security.CustomSuccessHandler" />
+    
+</beans:beans>
