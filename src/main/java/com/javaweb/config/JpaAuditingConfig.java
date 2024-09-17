@@ -1,4 +1,4 @@
-package com.laptrinhjavaweb.config;
+package com.javaweb.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

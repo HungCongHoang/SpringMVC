@@ -1,4 +1,4 @@
-package com.laptrinhjavaweb.security;
+package com.javaweb.security;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import com.laptrinhjavaweb.util.SecurityUtils;
+import com.javaweb.util.SecurityUtils;
 
 @Component
 public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {

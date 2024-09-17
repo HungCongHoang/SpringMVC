@@ -1,4 +1,4 @@
-<%--<%@ page import="com.javaweb.util.SecurityUtils" %>--%>
+<%@ page import="com.javaweb.util.SecurityUtils" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -19,8 +19,7 @@
 					<li class="nav-item"><a class="nav-link" href="#">Đăng ký</a></li>
 				</security:authorize>
 				<security:authorize access = "isAuthenticated()">
-					<li class="nav-item"><a class="nav-link" href="#">Wellcome
-<%--						<%=SecurityUtils.getPrincipal().getFullName()%>--%>
+					<li class="nav-item"><a class="nav-link" href="#">Wellcome<%=SecurityUtils.getPrincipal().getFullName()%>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="<c:url value='/thoat'/>">Thoát</a></li>
 				</security:authorize>
