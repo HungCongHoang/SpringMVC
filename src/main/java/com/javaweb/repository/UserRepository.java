@@ -1,8 +1,8 @@
-package com.laptrinhjavaweb.repository;
+package com.javaweb.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.laptrinhjavaweb.entity.UserEntity;
+import com.javaweb.entity.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	UserEntity findOneByUserNameAndStatus(String name, int status);

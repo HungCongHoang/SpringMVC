@@ -1,8 +1,8 @@
 package com.javaweb.controller.web;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecutiryContextHolder;
-import org.springframework.security.core.context.SecurityContextLogoutHandler;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +27,7 @@ public class HomeController {
 
    @RequestMapping(value = "/thoat", method = RequestMethod.GET)
    public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
-      Authentication auth = SecutiryContextHolder.getContext().getAuthentication();
+      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
       if (auth != null) {
          new SecurityContextLogoutHandler().logout(request, response, auth);
       }

@@ -1,4 +1,4 @@
-package com.laptrinhjavaweb.config;
+package com.javaweb.config;
 
 import java.util.Properties;
 
@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 //sử dụng config để chạy những config trong spring
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.laptrinhjavaweb.repository"})
+@EnableJpaRepositories(basePackages = {"com.javaweb.repository"})
 //Cho phép quản lý tự động transaction
 @EnableTransactionManagement
 public class JPAConfig {
@@ -52,14 +52,14 @@ public class JPAConfig {
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
 		return new PersistenceExceptionTranslationPostProcessor();
 	}
-	
+
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/springmvcbasicfree");
-		dataSource.setUsername("root");
-		dataSource.setPassword("1234");
+		dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		dataSource.setUrl("jdbc:sqlserver://DESKTOP-5OGVL8L\\SQLEXPRESS:1433;databaseName=SpringMVC_DB;encrypt=true;trustServerCertificate=true;");
+		dataSource.setUsername("sa");
+		dataSource.setPassword("123456");
 		return dataSource;
 	}
 	
@@ -67,9 +67,9 @@ public class JPAConfig {
 		Properties properties = new Properties();
 		//properties.setProperty("hibernate.hbm2ddl.auto", "update");
 		//lệnh creat để tạo database từ java class entity khi chưa có databse
-		//properties.setProperty("hibernate.hbm2ddl.auto", "create");
+		properties.setProperty("hibernate.hbm2ddl.auto", "create");
 		//sau khi có database, đã ổn định và có data trong databse thì ta comment lệnh create lại và dùng lệnh none bên dưới
-		properties.setProperty("hibernate.hbm2ddl.auto", "none");
+		//properties.setProperty("hibernate.hbm2ddl.auto", "none");
 		//enable @ManyToMany(fetch = FetchType.LAZY)
 		properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
 		return properties;

@@ -22,7 +22,7 @@ public class SecurityUtils {
 		MyUser myUser = (MyUser) (SecurityContextHolder.getContext()).getAuthentication().getPrincipal();
         return myUser;
     }
-	
+
 	//@SuppressWarnings("unchecked"):
 	//Bỏ qua cảnh báo liên quan đến việc ép kiểu không an toàn (unchecked cast). 
 	//Cụ thể, trong đoạn code này, có cảnh báo về việc ép kiểu từ Collection<? extends GrantedAuthority> sang List<GrantedAuthority>.

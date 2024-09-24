@@ -37,11 +37,11 @@ public class CategoryEntity extends BaseEntity {
 		this.code = code;
 	}
 
-	public List<NewEntity> getNews() {
-		return news;
-	}
+//	public List<NewEntity> getNews() {
+//		return news;
+//	}
 
-	public void setNews(List<NewEntity> news) {
-		this.news = news;
-	}
+//	public void setNews(List<NewEntity> news) {
+//		this.news = news;
+//	}
 }

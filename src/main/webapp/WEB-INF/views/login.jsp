@@ -19,7 +19,7 @@
 				</c:if>
 				<c:if test="${param.accessDenied != null}">
 					<div class="alert alert-danger">	
-							you Not authorize
+							You not authorize
 					</div>
 				</c:if>
 				<form action="j_spring_security_check" id="formLogin" method="post">
